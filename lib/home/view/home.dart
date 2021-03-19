@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import '../../details/view/details.dart';
 import '../model/recipe.dart';
 
 class Home extends StatefulWidget {
@@ -45,19 +46,28 @@ class HomeState extends State<Home> {
   }
 
   Widget _builderCard(Recipe recipe) {
-    return Card(
-        margin: EdgeInsets.all(16),
-        child: Column(
-            children: [
-              Stack(
-                  children: [
-                    _builderImageCard(recipe.foto),
-                    _builderTitleCard(recipe.titulo),
-                  ]
-              )
-            ]
-        )
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => Details(recipe: recipe)
+        ));
+      },
+      child: Card(
+          margin: EdgeInsets.all(16),
+          child: Column(
+              children: [
+                Stack(
+                    children: [
+                      _builderImageCard(recipe.foto),
+                      _builderGradientCard(),
+                      _builderTitleCard(recipe.titulo),
+                    ]
+                )
+              ]
+          )
+      ),
     );
+    
   }
 
   Widget _builderImageCard(String image) {
@@ -71,7 +81,23 @@ class HomeState extends State<Home> {
     return Positioned(
         bottom: 10,
         left: 10,
-        child: Text(title, style: TextStyle(fontSize: 20))
+        child: Text(title, style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+        ))
+    );
+  }
+
+  Widget _builderGradientCard() {
+    return Container(
+      height: 238,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: FractionalOffset.topCenter,
+          end: FractionalOffset.bottomCenter,
+          colors: [Colors.transparent, Colors.deepOrange.withOpacity(0.7)],
+        )
+      ),
     );
   }
 
