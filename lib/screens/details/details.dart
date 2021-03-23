@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_navigation/constants/app_constants.dart';
 import 'package:flutter_sample_navigation/models/recipe.dart';
 
 class Details extends StatelessWidget {
   final Recipe recipe;
+
+  static String titleIngredients = 'Ingredientes';
+  static String preparationMode = 'Modo de Preparo';
 
   Details({Key key, @required this.recipe}) : super(key: key);
 
@@ -18,12 +22,12 @@ class Details extends StatelessWidget {
         _builderTitleDetails(recipe.titulo),
         _builderRowIconsDetails(
             '${recipe.porcoes} porcões', recipe.tempoPreparo),
-        _builderSubTitleDetails('Ingredientes'),
+        _builderSubTitleDetails(titleIngredients),
         _builderTextDetails(recipe.ingredientes),
-        _builderSubTitleDetails('Modo de Preparo'),
+        _builderSubTitleDetails(preparationMode),
         _builderTextDetails(recipe.modoPreparo),
       ]),
-      appBar: _builderAppBar('Cozinhando em Casa'),
+      appBar: _builderAppBar(kApplicationName),
     );
   }
 

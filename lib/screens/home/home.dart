@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_navigation/constants/app_constants.dart';
 import 'package:flutter_sample_navigation/models/recipe.dart';
 import 'package:flutter_sample_navigation/screens/details/details.dart';
 
@@ -19,7 +20,7 @@ class HomeState extends State<Home> {
 
   Widget _buiderHome() {
     return Scaffold(
-      appBar: _builderAppBar('Cozinhando em Casa'),
+      appBar: _builderAppBar(kApplicationName),
       body: _builderListCards(),
     );
   }

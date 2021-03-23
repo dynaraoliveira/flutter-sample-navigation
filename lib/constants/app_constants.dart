@@ -1,0 +1,1 @@
+const kApplicationName = 'Cozinhando em Casa';
